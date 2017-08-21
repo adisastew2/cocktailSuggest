@@ -15,7 +15,7 @@ export class SelectBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
+      text: 'tequila',
       vetIngredients: [],
       ingredNotFound: false
     };

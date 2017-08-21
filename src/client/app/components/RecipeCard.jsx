@@ -1,34 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
-/**
-* Renders recipes 
-* Props: recipe.name, recipe.imageUrl, recipe.ingredients
-*/
 
 export class RecipeCard extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.getRecipePage = this.getRecipePage.bind(this);
+  }
+
+  getRecipePage() {
+    console.log('entered getRecipePage ');
+    
+  }
+  
   render() {
-    //remove extra commas from ingredients and add a space after each ingredient
-    var arr = [];
-    var ingredients = this.props.recipe.ingredients;
-    ingredients = ingredients.split(',');
-    // console.log('***');
-    // console.log(ingredients);
-    for(var i = 0 ; i < ingredients.length; i++){
-      if(ingredients[i] !== ''){
-        arr.push(ingredients[i]);
-      }
-    }
-    ingredients = arr.join(', ');
-
-
     return (
       <ul className="card">
         <div className="cardInfo">
           <li className="cardTextBGcolor header">{this.props.recipe.name}</li>
           <li className="cardTextBGcolor">{this.props.recipe.imageUrl}</li>
           <div className="cardTextBGcolor cardIngredHeader">INGREDIENTS</div>
-          <li className="cardTextBGcolor">{ingredients}</li>
+          <li className="cardTextBGcolor">{this.props.recipe.ingredients}</li>
+          <Link to={`/recipes/${this.props.recipe.id}`} className="cardTextBGcolor" onClick={this.getRecipePage}>Go to recipe page</Link>
         </div>
       </ul>
     );
