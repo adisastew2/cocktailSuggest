@@ -35,10 +35,7 @@ export class App extends React.Component{
         <img className="imgCenter" src='../img/title.png' />
         <SelectBox handler={this.handler}/>
         <p className="header">RECIPES</p>
-        {/* <Switch>
-          <Route exact path='/' component={RecipeList} />
-        </Switch> */}
-          <RecipeList list={this.state.ingredients}/>          
+        <RecipeList list={this.state.ingredients}/>          
       </div>
       );
     } else {
