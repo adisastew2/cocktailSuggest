@@ -27,6 +27,7 @@ var getRecipes = (ingStr, cb) => {
 /**
  * 
  * query database for a single recipe based on a given name 
+ * not used
  */
 var grabNamedRecipe = (name, cb) => {
 
@@ -39,6 +40,22 @@ var grabNamedRecipe = (name, cb) => {
   });
 
 };
+
+/**
+ * 
+ * query database for a single recipe based on a given id 
+ * not used
+ */
+var grabIdRecipe = (id, cb) => {
+
+  connection.query(`SELECT * FROM recipes WHERE id = '${id}'`, (err, results) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  });
+}
 
 /**
  * 
