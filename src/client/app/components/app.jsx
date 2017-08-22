@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { SelectBox } from './SelectBox.jsx';
 import { RecipeList } from './RecipeList.jsx';
 
+
 /**
 *Parent component. Renders SelectBox and RecipeList
 *Select box updates App.state.ingredients via handler function.
@@ -34,7 +35,7 @@ export class App extends React.Component{
         <img className="imgCenter" src='../img/title.png' />
         <SelectBox handler={this.handler}/>
         <p className="header">RECIPES</p>
-        <RecipeList list={this.state.ingredients}/>
+        <RecipeList list={this.state.ingredients}/>          
       </div>
       );
     } else {
