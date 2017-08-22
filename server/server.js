@@ -94,16 +94,16 @@ app.post('/getRecipes', (req, res) => {
     }
   ]
 
-  res.status(201).send(fakeRecipes);
+  // res.status(201).send(fakeRecipes);
 
 
-  // db.getRecipes(ingredientsList, function(err, data){
-  //   if ( err ) { 
-  //     res.status(500).send(err);
-  //   } else {
-  //     res.status(200).send(data);
-  //   }
-  // });
+  db.getRecipes(ingredientsList, function(err, data){
+    if ( err ) { 
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
 });
 
 app.get('/ingredients', (req, res) => {
@@ -123,18 +123,16 @@ app.get('/ingredients', (req, res) => {
     },
   ];
 
-  res.status(200).send(fakeIngredients);
+  // res.status(200).send(fakeIngredients);
 
-  // db.getIngredients(function(err, data){
-  //   if( err ) { res.status(500).send(err); }
-  //   console.log('RYAN', data);
-  //   res.send(data);
-  // });
+  db.getIngredients(function(err, data){
+    if( err ) { res.status(500).send(err); }
+    console.log('RYAN', data);
+    res.send(data);
+  });
 });
 
 app.get('/api/recipes/:id', (req, res) => {
-  //assuming req.body is a string
-  console.log('hiya', req.body);
 
   var fakeRecipePage = {
     id: 1,
@@ -146,7 +144,18 @@ app.get('/api/recipes/:id', (req, res) => {
 
   }
 
-  res.status(200).send(fakeRecipePage);
+
+
+  // res.status(200).send(fakeRecipePage);
+
+  db.grabIdRecipe(req.params.id, function(err, data){
+    if ( err ) { 
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+
 });
 
 app.listen(port, function() {
